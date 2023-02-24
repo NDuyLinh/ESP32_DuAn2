@@ -72,9 +72,9 @@ void Wifi_task(void)
     }
 }
 
-void Wifi_setFailureCallback(t_wifiFailureCallback fpCallback)
+void Wifi_setFailureCallback(t_wifiFailureCallback callback)
 {
-    Wifi_failureCallback = fpCallback;
+    Wifi_failureCallback = callback;
 }
 
 t_WifiState Wifi_getState(void)

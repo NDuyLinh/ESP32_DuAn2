@@ -22,7 +22,10 @@ void Wifi_failureHandler(void)
 
 void App_objectDetectionHandler(t_Color * color)
 {
-  (void)Database_pushObjectColor(color);
+  if (Database_pushObjectColor(color))
+    Serial.println("Push OK");
+  else 
+    Serial.println("Push failed");
 }
 
 void App_objectOverheightHandler(void)
@@ -41,6 +44,7 @@ void setup()
   App_init();
   App_setObjectDetectionCallback(App_objectDetectionHandler);
   App_setObjectOverheightCallback(App_objectOverheightHandler);
+  App_setMotorCallback(setMotor);
   
   Wifi_init();
   Wifi_setFailureCallback(Wifi_failureHandler);
@@ -66,10 +70,7 @@ void loop()
   if (Database_getState() == FIREBASE_CONNECTED)
   {
     App_task();
-
-    if (!App_getOverheightCondition())
-    {
-      setMotor(true); // Run motor
-    }
+ 
+    setMotor(!App_getOverheightCondition()); // Run motor if overheight is not detected
   }
 }

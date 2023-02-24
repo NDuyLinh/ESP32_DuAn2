@@ -45,6 +45,23 @@ typedef void (* t_appObjectOverheightCallback)(void);
  */
 void App_setObjectOverheightCallback(t_appObjectOverheightCallback callback);
 
+/* Function prototype of a callback
+ * for control the motor
+ *
+ */
+typedef void (* t_appMotorCallback)(bool state);
+
+/* Set a callback function used to grant
+ * the control of motor to the application
+ * so the app can stop the motor for better
+ * color reading
+ *
+ * input: pointer to callback function
+ *       (to unregister, pass a nullptr)
+ * output: none
+ */
+void App_setMotorCallback(t_appMotorCallback callback);
+
 /* Initialization procedure for application
  *
  * input: none

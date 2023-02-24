@@ -1,11 +1,11 @@
 #include <Arduino.h>
-#include <FirebaseESP32.h>
 #include "Time.h"
 
+#include "Lib/Firebase_ESP32_Client/src/FirebaseESP32.h"
 // Provide the token generation process info.
-#include "addons/TokenHelper.h"
+#include "Lib/Firebase_ESP32_Client/src/addons/TokenHelper.h"
 // Provide the RTDB payload printing info and other helper functions.
-#include "addons/RTDBHelper.h"
+#include "Lib/Firebase_ESP32_Client/src/addons/RTDBHelper.h"
 
 #include "FirebaseDb.h"
 #include "Authen.h"
@@ -154,8 +154,13 @@ bool Database_pushObjectColor(t_Color * objectColor)
 
     struct tm timeStamp;
     Database_getLocalTime(&timeStamp);
+
+    String hh = (timeStamp.tm_hour < 10 ? "0" : "") + String(timeStamp.tm_hour);
+    String mm = (timeStamp.tm_min < 10 ? "0" : "") + String(timeStamp.tm_min);
+    String ss = (timeStamp.tm_sec < 10 ? "0" : "") + String(timeStamp.tm_sec);
+
     String objectDetectionTime = String(timeStamp.tm_mday) + "/" + String((timeStamp.tm_mon) + 1) + "/" + String((timeStamp.tm_year) + 1900) +
-            " " + String(timeStamp.tm_hour) + ":" + String(timeStamp.tm_min) + ":" + String(timeStamp.tm_sec);
+            " " + hh + ":" + mm + ":" + ss;
 
     /* Get epoch time */
     time_t now;

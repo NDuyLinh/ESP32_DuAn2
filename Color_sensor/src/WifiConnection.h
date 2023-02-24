@@ -39,7 +39,7 @@ void Wifi_task(void);
  *       (to unregister, pass a nullptr)
  * output: none
  */
-void Wifi_setFailureCallback(t_wifiFailureCallback fpCallback);
+void Wifi_setFailureCallback(t_wifiFailureCallback callback);
 
 /* Get status of WiFi connection
  *

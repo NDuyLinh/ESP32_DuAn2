@@ -2,8 +2,8 @@
 #define AUTHEN_H
 
 /* WiFi credentials */
-#define WIFI_SSID "MINH DANG"
-#define WIFI_PASSWORD "wificuaDang"
+#define WIFI_SSID "Duy Linhhhh"
+#define WIFI_PASSWORD "hihihihi"
 
 /* API Key */
 #define API_KEY "AIzaSyD9Zviut5wazIMEs3E_5AThZZvavntDrlU"
